@@ -1,0 +1,50 @@
+# =========================
+# Unity generated
+# =========================
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# Asset Store tools cache
+[Aa]ssets/AssetStoreTools/
+
+# =========================
+# Rider / VS / VSCode
+# =========================
+.vscode/
+.idea/
+*.csproj
+*.sln
+*.unityproj
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# =========================
+# Unity meta (WICHTIG!)
+# =========================
+# NICHT ignorieren!
+# (also KEIN *.meta hier)
+
+# =========================
+# OS junk
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Unity packages / lock files
+# =========================
+# Packages/ und ProjectSettings/ sollen versioniert werden!
+# (also NICHT ignorieren)
+
