@@ -4,7 +4,7 @@ public class ExperienceController : MonoBehaviour
 {
     [Header("Core References")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private Renderer backgroundRenderer;
+    [SerializeField] private Camera mainCamera;
 
     [Header("Particle Looks")]
     [SerializeField] private ParticleSystem particlesCalm;
@@ -28,15 +28,8 @@ public class ExperienceController : MonoBehaviour
 
     // runtime
     private ExperiencePreset activePreset;
-    private Material bgMat;
     private float elapsed;
     private bool running;
-
-    private void Awake()
-    {
-        if (backgroundRenderer != null)
-            bgMat = backgroundRenderer.material; // instance material
-    }
 
     private void Start()
     {
@@ -161,12 +154,12 @@ public class ExperienceController : MonoBehaviour
             else StopParticles(particlesReset);
         }
 
-        // Apply initial background color immediately
-        if (bgMat != null)
+        // Apply initial camera background immediately
+        if (mainCamera != null)
         {
-            Color c = Color.Lerp(Color.black, GetMainColor(), 0.35f);
-            bgMat.SetColor("_Color", c);
+            mainCamera.backgroundColor = Color.Lerp(Color.black, GetMainColor(), 0.35f);
         }
+
     }
 
     // ---------- Mapping helpers ----------
@@ -222,13 +215,13 @@ public class ExperienceController : MonoBehaviour
 
     private void ApplyVisuals(float intensity)
     {
-        // Background tint & "brightness"
-        if (bgMat != null)
-        {
-            // increase brightness with intensity
-            Color c = Color.Lerp(Color.black, GetMainColor(), 0.25f + 0.75f * intensity);
-            bgMat.SetColor("_Color", c);
-        }
+        // Camera background (Solid Color)
+    if (mainCamera != null)
+    {
+        mainCamera.backgroundColor =
+            Color.Lerp(Color.black, GetMainColor(), 0.25f + 0.75f * intensity);
+    }
+
 
         // Drive particle behaviour slightly via code (optional)
         float motion = GetMotionSpeed();
